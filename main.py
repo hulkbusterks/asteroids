@@ -31,8 +31,12 @@ def main():
             p.update(dt)
 
         for a in asteroids:
+            for s in shots:
+                if s.collision(a):
+                    s.kill()
+                    a.split()
+
             if player.collision(a):
-                print("Game Over!")
                 sys.exit("Game Over!")
         
         screen.fill("black")
